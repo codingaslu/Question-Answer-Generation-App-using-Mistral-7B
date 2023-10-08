@@ -9,7 +9,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.docstore.document import Document
 from langchain.document_loaders import PyPDFLoader
 from langchain.prompts import PromptTemplate
-from langchain.embeddings import HuggingFaceBgeEmbeddings
+from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import FAISS
 from langchain.chains.summarize import load_summarize_chain
 from langchain.chains import RetrievalQA
@@ -123,7 +123,7 @@ def llm_pipeline(file_path):
 
     ques = ques_gen_chain.run(document_ques_gen)
 
-    embeddings = HuggingFaceBgeEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
+    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
 
     vector_store = FAISS.from_documents(document_answer_gen, embeddings)
 
